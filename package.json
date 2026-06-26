@@ -1,0 +1,21 @@
+{
+  "name": "fuji-rock-planner",
+  "private": false,
+  "version": "1.0.0",
+  "description": "FUJI ROCK 2026 时间表 · 标必看 / 待定，自动算冲突，一键生成分享海报。",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.2",
+    "vite": "^8.0.16"
+  }
+}
