@@ -2008,6 +2008,19 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   max-width: 280px;
   line-height: 1.4;
 }
+.myplan-share-error {
+  margin: 0;
+  max-width: 320px;
+  padding: 8px 12px;
+  background: rgba(139, 29, 29, 0.92);
+  color: #fbf9f8;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  text-align: left;
+  border: 1px solid #fbf9f8;
+  word-break: break-word;
+}
 
 /* ========================================================== */
 /* 分享预览 modal — Bauhaus 风格统一                          */

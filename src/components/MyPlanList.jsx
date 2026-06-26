@@ -1,6 +1,6 @@
 import React, { useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import html2canvas from "html2canvas";
+import { toBlob } from "html-to-image";
 import { formatHM, formatChineseMonthDay } from "../lib/time.js";
 import { getStageColor } from "../lib/stages.js";
 import ShareCanvas from "./ShareCanvas.jsx";
@@ -25,45 +25,45 @@ export default function MyPlanList({
   const [shareState, setShareState] = useState("idle"); // idle | working | preview | done | error
   const [previewBlob, setPreviewBlob] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [shareError, setShareError] = useState(null);
 
   async function handleShare() {
     setShareState("working");
+    setShareError(null);
     try {
       const target = shareCanvasRef.current?.querySelector(".share-canvas");
       if (!target) throw new Error("share canvas 未就绪");
-      // 等字体加载完，避免 html2canvas 抓到无字体的画
+      // 等字体加载完，避免抓到无字体的画
       if (document.fonts && document.fonts.ready) {
         try { await document.fonts.ready; } catch (_) {}
       }
-      // iOS Safari 大 canvas 容易 toBlob 失败；scale 取较小值
+      // iOS Safari 上 canvas 总像素超 16M 会失败；pixelRatio 取 1 最稳
       const dpr = window.devicePixelRatio || 1;
-      const scale = Math.min(1.5, dpr);
-      const canvas = await html2canvas(target, {
-        backgroundColor: "#d6dfde",
-        scale,
-        useCORS: true,
-        logging: false,
-        imageTimeout: 0,
-      });
-      const blob = await new Promise((resolve) =>
-        canvas.toBlob(resolve, "image/png"),
-      );
-      if (!blob) {
-        // 退化到 dataURL（部分 iOS 上 toBlob 返回 null）
-        const dataUrl = canvas.toDataURL("image/png");
-        const res = await fetch(dataUrl);
-        const fallbackBlob = await res.blob();
-        setPreviewBlob(fallbackBlob);
-        setPreviewUrl(URL.createObjectURL(fallbackBlob));
-      } else {
-        setPreviewBlob(blob);
-        setPreviewUrl(URL.createObjectURL(blob));
+      const pixelRatio = Math.min(1.5, dpr);
+      // html-to-image 用 foreignObject 序列化，复杂 SVG filter（噪点）
+      // 在 foreignObject 里会渲染失败导致整张图变黑。生成前临时移除，完成后恢复。
+      const prevBgImage = target.style.backgroundImage;
+      target.style.backgroundImage = "none";
+      let blob;
+      try {
+        blob = await toBlob(target, {
+          backgroundColor: "#d6dfde",
+          pixelRatio,
+          cacheBust: true,
+        });
+      } finally {
+        target.style.backgroundImage = prevBgImage;
       }
+      if (!blob) throw new Error("生成图片失败（返回空 blob）");
+      setPreviewBlob(blob);
+      setPreviewUrl(URL.createObjectURL(blob));
       setShareState("preview");
     } catch (err) {
       console.error("[share] failed:", err);
+      const msg = err?.message || String(err) || "未知错误";
+      setShareError(msg.length > 120 ? msg.slice(0, 120) + "…" : msg);
       setShareState("error");
-      setTimeout(() => setShareState("idle"), 2500);
+      // error 状态不再自动消失，让用户能看到信息
     }
   }
 
@@ -212,9 +212,14 @@ export default function MyPlanList({
               {shareState === "working" && "生成图片…"}
               {shareState === "done" && "已保存"}
               {shareState === "error" && "失败，重试"}
-              {shareState === "idle" && "分享 Share"}
+              {(shareState === "idle" || shareState === "preview") && "分享 Share"}
             </span>
           </button>
+          {shareState === "error" && shareError && (
+            <p className="myplan-share-error u-mono" role="alert">
+              ⚠ {shareError}
+            </p>
+          )}
           <p className="myplan-share-hint">
             保存你的观演计划，呼朋唤友一起去看演出吧！
           </p>
