@@ -5,7 +5,7 @@
 
 > 一份给 **FUJI ROCK FESTIVAL 2026** 的观演计划工具。把 158 组演出标成必看 / 待定，自动算撞场，最后一键生成可以发朋友圈的分享海报。
 
-🎟 **在线访问**：_部署后填上你的 Vercel URL_
+🎟 **在线访问**：[fujirock2026-xy.vercel.app](https://fujirock2026-xy.vercel.app/)
 
 <p align="center">
   <img src="prototype-screenshot.png" alt="Fuji Rock Planner 截图" width="320" />
@@ -24,7 +24,7 @@
 ## 🚀 本地运行
 
 ```bash
-git clone https://github.com/<your-username>/fuji-rock-planner.git
+git clone https://github.com/cherotichsxy-hub/fuji-rock-planner.git
 cd fuji-rock-planner
 npm install
 npm run dev
@@ -41,7 +41,7 @@ npm run dev
 
 也可以一键部署：
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/<your-username>/fuji-rock-planner)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/cherotichsxy-hub/fuji-rock-planner)
 
 ## 🧰 技术栈
 
