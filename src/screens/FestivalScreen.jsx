@@ -18,6 +18,10 @@ export default function FestivalScreen({
   const [activeDate, setActiveDate] = useState(festival.dates[0]);
   const [tab, setTab] = useState(initialTab);
   const [stageFilter, setStageFilter] = useState("all");
+  const [showOtherStages, setShowOtherStages] = useState(false);
+  const mainCount = festival.mainStageCount || festival.stages.length;
+  const mainStages = festival.stages.slice(0, mainCount);
+  const otherStages = festival.stages.slice(mainCount);
 
   const festivalSelections = selections || {};
   const conflictMap = useMemo(
@@ -72,7 +76,7 @@ export default function FestivalScreen({
           >
             ALL
           </button>
-          {festival.stages.map((stage) => {
+          {mainStages.map((stage) => {
             const color = getStageColor(festival, stage);
             const active = stageFilter === stage;
             return (
@@ -90,6 +94,34 @@ export default function FestivalScreen({
               </button>
             );
           })}
+          {showOtherStages && otherStages.map((stage) => {
+            const color = getStageColor(festival, stage);
+            const active = stageFilter === stage;
+            return (
+              <button
+                key={stage}
+                type="button"
+                className={`chip chip-other${active ? " active" : ""}`}
+                style={{
+                  "--chip-color": color.solid,
+                  "--chip-soft": color.soft,
+                }}
+                onClick={() => setStageFilter(stage)}
+              >
+                {shortStageName(stage)}
+              </button>
+            );
+          })}
+          {otherStages.length > 0 && (
+            <button
+              type="button"
+              className="chip chip-more"
+              onClick={() => setShowOtherStages((v) => !v)}
+              aria-expanded={showOtherStages}
+            >
+              {showOtherStages ? "收起 −" : `更多 +${otherStages.length}`}
+            </button>
+          )}
         </div>
       </div>
 

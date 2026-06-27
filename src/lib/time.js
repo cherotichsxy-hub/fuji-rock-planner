@@ -31,6 +31,9 @@ export function shortStageName(name) {
     .replace(/空间$/, "")
     .replace(/\s*STAGE$/i, "")
     .replace(/\s*MARQUEE$/i, "")
+    .replace(/^NAEBA SHOKUDOU$/, "苗場食堂")
+    .replace(/^PALACE AREA$/, "PALACE")
+    .replace(/^PYRAMID GARDEN$/, "PYRAMID")
     .trim();
 }
 

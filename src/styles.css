@@ -1148,6 +1148,15 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   color: #fff;
   border-color: var(--chip-color);
 }
+.chip.chip-more {
+  border-style: dashed;
+  color: var(--text-soft);
+  opacity: 0.85;
+  cursor: pointer;
+}
+.chip.chip-other {
+  opacity: 0.92;
+}
 
 /* Festival 内容主体 */
 .fest-body {
@@ -1772,6 +1781,191 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   border-top: 1px dashed rgba(0, 0, 0, 0.45);
 }
 
+/* ===== MyPlan 视图切换 toggle ===== */
+.myplan-view-switch {
+  display: inline-flex;
+  margin: 10px 0 0;
+  background: #fff;
+  border: 1.5px solid #1e1506;
+  box-shadow: 2px 2px 0 #1e1506;
+}
+.myplan-view-switch button {
+  padding: 7px 16px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #1e1506;
+  opacity: 0.45;
+  cursor: pointer;
+}
+.myplan-view-switch button.active {
+  background: #1e1506;
+  color: #fbf9f8;
+  opacity: 1;
+}
+.myplan-view-switch button + button {
+  border-left: 1.5px solid #1e1506;
+}
+
+/* ===== 课表视图 ===== */
+.timetable-empty {
+  padding: 36px 12px;
+  text-align: center;
+  color: rgba(0,0,0,0.55);
+  font-size: 13px;
+}
+.timetable-empty p { margin: 4px 0; }
+.timetable-wrap {
+  margin: 8px 0 16px;
+  border: 1.5px solid var(--paper-ink);
+  background: var(--paper-bg);
+  overflow: hidden;
+}
+.timetable-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.timetable-grid {
+  display: grid;
+  align-items: stretch;
+  min-width: 100%;
+}
+.timetable-hours {
+  position: relative;
+  background: rgba(0,0,0,0.04);
+  border-right: 1px solid rgba(0,0,0,0.15);
+}
+.timetable-hour-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: rgba(0,0,0,0.55);
+  transform: translateY(-7px);
+  padding: 0 4px;
+}
+.timetable-lane {
+  position: relative;
+  border-left: 1px solid rgba(0,0,0,0.12);
+  background: var(--paper-bg);
+}
+.timetable-lane:first-of-type {
+  border-left: none;
+}
+.timetable-grid-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 1px dashed rgba(0,0,0,0.10);
+}
+
+/* 演出块 ===== 必看：实底色块 + 加粗 ===== */
+.tt-block {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  padding: 6px 8px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.2;
+}
+.tt-block.tt-must {
+  background: var(--stage-solid);
+  color: #fff;
+  font-weight: 700;
+  border: 1.5px solid var(--paper-ink);
+  box-shadow: 2px 2px 0 var(--paper-ink);
+  z-index: 2;
+}
+/* ===== 待定：纸色底 + 描边 + opacity 0.55 ===== */
+.tt-block.tt-maybe {
+  background: var(--paper-bg);
+  color: var(--paper-ink);
+  border: 1px dashed var(--paper-ink);
+  opacity: 0.55;
+  font-weight: 500;
+  z-index: 1;
+}
+/* 块内的 stage chip ===== 小字 + 圆点 ===== */
+.tt-block-stage {
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  margin-top: auto;
+  opacity: 0.78;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tt-block.tt-must .tt-block-stage { opacity: 0.92; }
+.tt-block-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--stage-solid);
+  flex: 0 0 auto;
+  outline: 1px solid rgba(255,255,255,0.55);
+}
+.tt-block.tt-maybe .tt-block-dot {
+  outline: 1px solid var(--paper-ink);
+}
+.tt-block-time {
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.tt-block.tt-maybe .tt-block-time { opacity: 0.65; }
+.tt-block-end { opacity: 0.7; }
+.tt-block-name {
+  font-size: 12px;
+  word-break: break-word;
+  display: flex;
+  gap: 4px;
+  align-items: flex-start;
+}
+.tt-block.tt-must .tt-block-name {
+  font-size: 13px;
+  font-weight: 800;
+}
+.tt-block-link {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.85;
+  font-size: 11px;
+  flex: 0 0 auto;
+}
+.tt-block-conflict {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding: 2px 4px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 2px;
+  align-self: flex-start;
+}
+.tt-block.tt-maybe.has-conflict {
+  border-color: var(--accent-crimson, #8b1d1d);
+  border-style: solid;
+}
+.tt-block.tt-maybe .tt-block-conflict {
+  background: rgba(139,29,29,0.12);
+  color: var(--accent-crimson, #8b1d1d);
+}
+
 /* ---------- 事件行 ---------- */
 .myplan-rows {
   list-style: none;
@@ -2049,6 +2243,62 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   max-height: 92vh;
   animation: slideUp 0.22s ease-out;
 }
+.share-preview-mode {
+  display: inline-flex;
+  align-self: center;
+  background: #fff;
+  border: 1.5px solid #1e1506;
+  box-shadow: 2px 2px 0 #1e1506;
+}
+.share-preview-mode button {
+  padding: 7px 14px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #1e1506;
+  opacity: 0.45;
+  cursor: pointer;
+}
+.share-preview-mode button.active {
+  background: #1e1506;
+  color: #fbf9f8;
+  opacity: 1;
+}
+.share-preview-mode button + button {
+  border-left: 1.5px solid #1e1506;
+}
+.share-preview-mode button:disabled {
+  cursor: wait;
+}
+.share-preview-days {
+  display: inline-flex;
+  align-self: center;
+  gap: 6px;
+  margin-top: -4px;
+}
+.share-preview-days button {
+  padding: 5px 12px;
+  background: transparent;
+  border: 1.5px solid #1e1506;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #1e1506;
+  opacity: 0.45;
+  cursor: pointer;
+}
+.share-preview-days button.active {
+  background: #1e1506;
+  color: #fbf9f8;
+  opacity: 1;
+}
+.share-preview-days button:disabled {
+  cursor: wait;
+}
 .share-preview-close {
   position: absolute;
   top: 10px;
@@ -2139,6 +2389,176 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   left: 0;
   pointer-events: none;
   z-index: -1;
+}
+
+/* ========================================================== */
+/* 分享画布 · 时间表式 v2 (单天，米黄+黑+crimson 三色)         */
+/* ========================================================== */
+.share-tt-canvas {
+  background-color: #fbf9f8;
+  color: #1e1506;
+  padding: 64px 56px 36px;
+  font-family: var(--font-display, ui-sans-serif);
+  display: inline-block;
+  position: relative;
+}
+.share-tt-head {
+  margin-bottom: 32px;
+}
+.share-tt-going {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+}
+.share-tt-bolt { width: 18px; height: 32px; color: #8b1d1d; }
+.share-tt-bolt.mirror { transform: scaleX(-1); }
+.share-tt-name {
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  margin: 0 0 14px;
+  line-height: 0.98;
+}
+.share-tt-meta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+.share-tt-meta strong {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+.share-tt-meta .sep { opacity: 0.35; }
+
+.share-tt-day-empty {
+  padding: 64px 40px;
+  text-align: center;
+  color: rgba(30, 21, 6, 0.55);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+}
+
+.share-tt-grid {
+  display: grid;
+  align-items: stretch;
+  position: relative;
+}
+.share-tt-hours {
+  position: relative;
+  border-right: 1.5px solid #1e1506;
+}
+.share-tt-hour-label {
+  position: absolute;
+  left: 0;
+  right: 8px;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #1e1506;
+  transform: translateY(-8px);
+}
+.share-tt-lane {
+  position: relative;
+  border-left: 1.5px solid #1e1506;
+}
+.share-tt-lane:first-of-type { border-left: none; }
+.share-tt-block {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  overflow: hidden;
+  line-height: 1.2;
+  border-top: 1.5px solid #1e1506;
+}
+.share-tt-block.share-tt-must {
+  background: var(--stage-solid);
+  color: #fbf9f8;
+}
+.share-tt-block.share-tt-maybe {
+  background: #fbf9f8;
+  color: #1e1506;
+  border-top-style: dashed;
+}
+.share-tt-block.share-tt-maybe::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1.5px dashed var(--stage-solid);
+  border-top: none;
+  pointer-events: none;
+}
+.share-tt-block-stage {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.share-tt-block.share-tt-must .share-tt-block-stage { opacity: 0.9; }
+.share-tt-block-name {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0;
+  word-break: break-word;
+}
+.share-tt-block.share-tt-maybe .share-tt-block-name {
+  opacity: 0.78;
+}
+.share-tt-block-time {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+}
+
+.share-tt-foot {
+  margin-top: 36px;
+  border-top: 1.5px solid #1e1506;
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+.share-tt-foot-tag {
+  text-transform: uppercase;
+  color: rgba(30, 21, 6, 0.78);
+}
+.share-tt-foot-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: rgba(30, 21, 6, 0.78);
+}
+.share-tt-foot-legend .legend-must,
+.share-tt-foot-legend .legend-maybe {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
+  vertical-align: -2px;
+}
+.share-tt-foot-legend .legend-must { background: #8b1d1d; }
+.share-tt-foot-legend .legend-maybe {
+  background: #fbf9f8;
+  border: 1.5px dashed #1e1506;
 }
 .share-canvas {
   background-color: #d6dfde;

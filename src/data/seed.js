@@ -9,6 +9,8 @@ export const seedFestivals = [
     location: "Naeba Ski Resort, Niigata",
     source: "fujirockfestival.com 官方时间表",
     dates: ["2026-07-24", "2026-07-25", "2026-07-26"],
+    // 前 mainStageCount 个为主舞台（默认展示），其余在 "More" 里折叠
+    mainStageCount: 8,
     stages: [
       "GREEN STAGE",
       "WHITE STAGE",
@@ -18,6 +20,12 @@ export const seedFestivals = [
       "GYPSY AVALON",
       "CRYSTAL PALACE",
       "ROOKIE A GO-GO",
+      // 以下为"其他"舞台
+      "NAEBA SHOKUDOU",
+      "GANBAN",
+      "BLUE GALAXY",
+      "PALACE AREA",
+      "PYRAMID GARDEN",
     ],
   },
 ];
@@ -211,5 +219,141 @@ export const seedPerformances = [
   { id: "fr-d3-k3", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "SYAYOS",                         stageName: "ROOKIE A GO-GO", startAt: "2026-07-27T01:00:00", endAt: "2026-07-27T01:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6984" },
   { id: "fr-d3-k4", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "Wappen",                         stageName: "ROOKIE A GO-GO", startAt: "2026-07-27T02:00:00", endAt: "2026-07-27T02:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6985" },
   { id: "fr-d3-k5", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "It's US!!!!",                    stageName: "ROOKIE A GO-GO", startAt: "2026-07-27T03:00:00", endAt: "2026-07-27T03:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6986" },
+
+  // ============================================================
+  // 以下为"其他"舞台 (官方时间表完整收录)
+  // ============================================================
+
+  // Day 1 · NAEBA SHOKUDOU (苗場食堂)
+  { id: "fr-d1-n1", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "杉本ラララ",          stageName: "NAEBA SHOKUDOU", startAt: "2026-07-24T11:50:00", endAt: "2026-07-24T12:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6938" },
+  { id: "fr-d1-n2", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "快速東京",            stageName: "NAEBA SHOKUDOU", startAt: "2026-07-24T13:15:00", endAt: "2026-07-24T13:55:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/2838" },
+  { id: "fr-d1-n3", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "ENTH",               stageName: "NAEBA SHOKUDOU", startAt: "2026-07-24T15:10:00", endAt: "2026-07-24T15:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/5829" },
+  { id: "fr-d1-n4", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "苗場音楽突撃隊",      stageName: "NAEBA SHOKUDOU", startAt: "2026-07-24T17:10:00", endAt: "2026-07-24T17:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/3594" },
+  { id: "fr-d1-n5", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "TENDOUJI",           stageName: "NAEBA SHOKUDOU", startAt: "2026-07-24T19:10:00", endAt: "2026-07-24T19:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/3196" },
+  { id: "fr-d1-n6", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "SHADOWS",            stageName: "NAEBA SHOKUDOU", startAt: "2026-07-24T21:10:00", endAt: "2026-07-24T21:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/2698" },
+  { id: "fr-d1-n7", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "GOOD4NOTHING",       stageName: "NAEBA SHOKUDOU", startAt: "2026-07-24T22:45:00", endAt: "2026-07-24T23:25:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6944" },
+
+  // Day 1 · GANBAN (岩盤)
+  { id: "fr-d1-gb1", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "SUGIURUMN",                       stageName: "GANBAN", startAt: "2026-07-24T23:30:00", endAt: "2026-07-25T01:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6159" },
+  { id: "fr-d1-gb2", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "Natsuki Fujimoto (Tempalay)",     stageName: "GANBAN", startAt: "2026-07-25T01:00:00", endAt: "2026-07-25T02:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6957" },
+  { id: "fr-d1-gb3", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "E.O.U",                           stageName: "GANBAN", startAt: "2026-07-25T02:00:00", endAt: "2026-07-25T03:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/277" },
+  { id: "fr-d1-gb4", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "youhei (BLACK GANION/UNTTLD)",    stageName: "GANBAN", startAt: "2026-07-25T03:30:00", endAt: "2026-07-25T05:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6742" },
+
+  // Day 1 · BLUE GALAXY
+  { id: "fr-d1-bg1",  festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "DJ JIM",            stageName: "BLUE GALAXY", startAt: "2026-07-24T12:30:00", endAt: "2026-07-24T14:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/1414" },
+  { id: "fr-d1-bg2",  festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "DJ HANA-G",         stageName: "BLUE GALAXY", startAt: "2026-07-24T14:00:00", endAt: "2026-07-24T14:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/5102" },
+  { id: "fr-d1-bg3",  festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "Bamboo Boy",        stageName: "BLUE GALAXY", startAt: "2026-07-24T14:50:00", endAt: "2026-07-24T15:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6963" },
+  { id: "fr-d1-bg4",  festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "TOYO P",            stageName: "BLUE GALAXY", startAt: "2026-07-24T15:30:00", endAt: "2026-07-24T16:10:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6931" },
+  { id: "fr-d1-bg5",  festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "DJ SCNDLS",         stageName: "BLUE GALAXY", startAt: "2026-07-24T16:10:00", endAt: "2026-07-24T17:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6961" },
+  { id: "fr-d1-bg6",  festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "TEKASA",            stageName: "BLUE GALAXY", startAt: "2026-07-24T17:00:00", endAt: "2026-07-24T17:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6960" },
+  { id: "fr-d1-bg7",  festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "CUMBIA KID",        stageName: "BLUE GALAXY", startAt: "2026-07-24T17:50:00", endAt: "2026-07-24T18:40:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6966" },
+  { id: "fr-d1-bg8",  festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "RIHO",              stageName: "BLUE GALAXY", startAt: "2026-07-24T18:40:00", endAt: "2026-07-24T19:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6791" },
+  { id: "fr-d1-bg9",  festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "RJD",               stageName: "BLUE GALAXY", startAt: "2026-07-24T19:30:00", endAt: "2026-07-24T20:20:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6959" },
+  { id: "fr-d1-bg10", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "BABY SOUL",         stageName: "BLUE GALAXY", startAt: "2026-07-24T20:20:00", endAt: "2026-07-24T21:10:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/1165" },
+  { id: "fr-d1-bg11", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "DOC.KOYAMANTADO",   stageName: "BLUE GALAXY", startAt: "2026-07-24T21:10:00", endAt: "2026-07-24T22:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6477" },
+  { id: "fr-d1-bg12", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "DJ COLA",           stageName: "BLUE GALAXY", startAt: "2026-07-24T22:00:00", endAt: "2026-07-24T23:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/2165" },
+  { id: "fr-d1-bg13", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "DJ JIM",            stageName: "BLUE GALAXY", startAt: "2026-07-24T23:00:00", endAt: "2026-07-25T00:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/1414" },
+
+  // Day 1 · PALACE AREA (SAKURA CIRCUS)
+  { id: "fr-d1-pa1", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "SAKURA CIRCUS",     stageName: "PALACE AREA", startAt: "2026-07-25T00:30:00", endAt: "2026-07-25T00:45:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6937" },
+  { id: "fr-d1-pa2", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "SAKURA CIRCUS",     stageName: "PALACE AREA", startAt: "2026-07-25T01:30:00", endAt: "2026-07-25T01:45:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6937" },
+  { id: "fr-d1-pa3", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "SAKURA CIRCUS",     stageName: "PALACE AREA", startAt: "2026-07-25T02:30:00", endAt: "2026-07-25T02:45:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6937" },
+
+  // Day 1 · PYRAMID GARDEN
+  { id: "fr-d1-pg1", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "ヨガワークショップ / 渋木さやか",     stageName: "PYRAMID GARDEN", startAt: "2026-07-24T08:30:00", endAt: "2026-07-24T09:20:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/5716" },
+  { id: "fr-d1-pg2", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "LOVE FOR NIPPON",                stageName: "PYRAMID GARDEN", startAt: "2026-07-24T09:40:00", endAt: "2026-07-24T10:40:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/3295" },
+  { id: "fr-d1-pg3", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "el tempo",                       stageName: "PYRAMID GARDEN", startAt: "2026-07-24T11:30:00", endAt: "2026-07-24T12:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/3266" },
+  { id: "fr-d1-pg4", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "DJ QUIETSTORM",                  stageName: "PYRAMID GARDEN", startAt: "2026-07-24T16:00:00", endAt: "2026-07-24T18:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6954" },
+  { id: "fr-d1-pg5", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "Kon & y. (Timothy Really)",      stageName: "PYRAMID GARDEN", startAt: "2026-07-24T18:00:00", endAt: "2026-07-24T20:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6948" },
+  { id: "fr-d1-pg6", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "CRAZY-T",                        stageName: "PYRAMID GARDEN", startAt: "2026-07-24T20:00:00", endAt: "2026-07-24T22:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6947" },
+  { id: "fr-d1-pg7", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "君島大空 × 水野蒼生 電氣交響楽団", stageName: "PYRAMID GARDEN", startAt: "2026-07-24T22:30:00", endAt: "2026-07-24T23:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6953" },
+  { id: "fr-d1-pg8", festivalId: "fuji-rock-2026", displayDate: "2026-07-24", artistName: "Aki",                            stageName: "PYRAMID GARDEN", startAt: "2026-07-25T00:20:00", endAt: "2026-07-25T01:20:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/4945" },
+
+  // Day 2 · NAEBA SHOKUDOU
+  { id: "fr-d2-n1", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "Za SAVAGE",              stageName: "NAEBA SHOKUDOU", startAt: "2026-07-25T12:10:00", endAt: "2026-07-25T12:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/3808" },
+  { id: "fr-d2-n2", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "寺久保伶矢",             stageName: "NAEBA SHOKUDOU", startAt: "2026-07-25T13:30:00", endAt: "2026-07-25T14:10:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6090" },
+  { id: "fr-d2-n3", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "NONE THE WiSER",         stageName: "NAEBA SHOKUDOU", startAt: "2026-07-25T15:10:00", endAt: "2026-07-25T15:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/5829" },
+  { id: "fr-d2-n4", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "ANIEKY A GO GO ! BAND",  stageName: "NAEBA SHOKUDOU", startAt: "2026-07-25T17:10:00", endAt: "2026-07-25T17:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/3594" },
+  { id: "fr-d2-n5", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "苗場音楽突撃隊",         stageName: "NAEBA SHOKUDOU", startAt: "2026-07-25T19:10:00", endAt: "2026-07-25T19:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/3196" },
+  { id: "fr-d2-n6", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "the Tiger",              stageName: "NAEBA SHOKUDOU", startAt: "2026-07-25T21:10:00", endAt: "2026-07-25T21:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/2698" },
+  { id: "fr-d2-n7", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "HOT DOG EXPRESS",        stageName: "NAEBA SHOKUDOU", startAt: "2026-07-25T22:45:00", endAt: "2026-07-25T23:25:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6944" },
+
+  // Day 2 · GANBAN
+  { id: "fr-d2-gb1", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "AAAMYYY (Tempalay)",    stageName: "GANBAN", startAt: "2026-07-25T23:30:00", endAt: "2026-07-26T00:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6159" },
+  { id: "fr-d2-gb2", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "MONJOE",                stageName: "GANBAN", startAt: "2026-07-26T00:30:00", endAt: "2026-07-26T02:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6352" },
+  { id: "fr-d2-gb3", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "O.N.O (THA BLUE HERB)", stageName: "GANBAN", startAt: "2026-07-26T02:00:00", endAt: "2026-07-26T02:45:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/277" },
+  { id: "fr-d2-gb4", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "MaL a.k.a. Primal Dub", stageName: "GANBAN", startAt: "2026-07-26T02:45:00", endAt: "2026-07-26T03:45:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6955" },
+  { id: "fr-d2-gb5", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "Lomax (NC4K)",          stageName: "GANBAN", startAt: "2026-07-26T03:45:00", endAt: "2026-07-26T05:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6956" },
+
+  // Day 2 · BLUE GALAXY
+  { id: "fr-d2-bg1",  festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "DJ JIM",                        stageName: "BLUE GALAXY", startAt: "2026-07-25T12:50:00", endAt: "2026-07-25T14:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/1414" },
+  { id: "fr-d2-bg2",  festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "DJ GONCHAN",                    stageName: "BLUE GALAXY", startAt: "2026-07-25T14:00:00", endAt: "2026-07-25T14:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/5102" },
+  { id: "fr-d2-bg3",  festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "NORTH KANTO REBEL SOUND CLASH", stageName: "BLUE GALAXY", startAt: "2026-07-25T14:50:00", endAt: "2026-07-25T15:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6963" },
+  { id: "fr-d2-bg4",  festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "JAPAN CUMBIA FESTIVAL DJs",     stageName: "BLUE GALAXY", startAt: "2026-07-25T15:30:00", endAt: "2026-07-25T16:20:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6931" },
+  { id: "fr-d2-bg5",  festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "FUMINN",                        stageName: "BLUE GALAXY", startAt: "2026-07-25T16:20:00", endAt: "2026-07-25T17:10:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6962" },
+  { id: "fr-d2-bg6",  festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "TXAKO",                         stageName: "BLUE GALAXY", startAt: "2026-07-25T17:10:00", endAt: "2026-07-25T18:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6480" },
+  { id: "fr-d2-bg7",  festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "DJ TOMMY",                      stageName: "BLUE GALAXY", startAt: "2026-07-25T18:00:00", endAt: "2026-07-25T18:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6797" },
+  { id: "fr-d2-bg8",  festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "CLUB SKA",                      stageName: "BLUE GALAXY", startAt: "2026-07-25T18:50:00", endAt: "2026-07-25T21:20:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/740" },
+  { id: "fr-d2-bg9",  festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "SPECIAL GUEST",                 stageName: "BLUE GALAXY", startAt: "2026-07-25T21:20:00", endAt: "2026-07-25T22:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6799" },
+  { id: "fr-d2-bg10", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "RIHO",                          stageName: "BLUE GALAXY", startAt: "2026-07-25T22:00:00", endAt: "2026-07-25T23:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/2165" },
+  { id: "fr-d2-bg11", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "DJ JIM",                        stageName: "BLUE GALAXY", startAt: "2026-07-25T23:00:00", endAt: "2026-07-26T00:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/1414" },
+
+  // Day 2 · PALACE AREA
+  { id: "fr-d2-pa1", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "SAKURA CIRCUS",     stageName: "PALACE AREA", startAt: "2026-07-26T00:30:00", endAt: "2026-07-26T00:45:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6937" },
+  { id: "fr-d2-pa2", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "SAKURA CIRCUS",     stageName: "PALACE AREA", startAt: "2026-07-26T01:30:00", endAt: "2026-07-26T01:45:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6937" },
+  { id: "fr-d2-pa3", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "SAKURA CIRCUS",     stageName: "PALACE AREA", startAt: "2026-07-26T02:30:00", endAt: "2026-07-26T02:45:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6937" },
+
+  // Day 2 · PYRAMID GARDEN
+  { id: "fr-d2-pg1", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "ヨガワークショップ / 渋木さやか",   stageName: "PYRAMID GARDEN", startAt: "2026-07-25T08:30:00", endAt: "2026-07-25T09:20:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/5716" },
+  { id: "fr-d2-pg2", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "GOMA",                            stageName: "PYRAMID GARDEN", startAt: "2026-07-25T09:40:00", endAt: "2026-07-25T10:40:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/3295" },
+  { id: "fr-d2-pg3", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "Michael Kaneko",                  stageName: "PYRAMID GARDEN", startAt: "2026-07-25T11:30:00", endAt: "2026-07-25T12:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/3266" },
+  { id: "fr-d2-pg4", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "YOSHIROTTEN",                     stageName: "PYRAMID GARDEN", startAt: "2026-07-25T16:30:00", endAt: "2026-07-25T19:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6952" },
+  { id: "fr-d2-pg5", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "AOIZO",                           stageName: "PYRAMID GARDEN", startAt: "2026-07-25T19:30:00", endAt: "2026-07-25T20:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6951" },
+  { id: "fr-d2-pg6", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "BAKU (KAIKOO)",                   stageName: "PYRAMID GARDEN", startAt: "2026-07-25T20:30:00", endAt: "2026-07-25T22:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6950" },
+  { id: "fr-d2-pg7", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "ずっと真夜中でいいのに。",         stageName: "PYRAMID GARDEN", startAt: "2026-07-25T23:00:00", endAt: "2026-07-26T00:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6949" },
+  { id: "fr-d2-pg8", festivalId: "fuji-rock-2026", displayDate: "2026-07-25", artistName: "SILENT POETS (DUB ENSEMBLE)",     stageName: "PYRAMID GARDEN", startAt: "2026-07-26T00:50:00", endAt: "2026-07-26T01:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/4796" },
+
+  // Day 3 · NAEBA SHOKUDOU
+  { id: "fr-d3-n1", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "鬼の右腕",              stageName: "NAEBA SHOKUDOU", startAt: "2026-07-26T12:10:00", endAt: "2026-07-26T12:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/3808" },
+  { id: "fr-d3-n2", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "揺らぎ",                stageName: "NAEBA SHOKUDOU", startAt: "2026-07-26T13:30:00", endAt: "2026-07-26T14:10:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6090" },
+  { id: "fr-d3-n3", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "saccharin",             stageName: "NAEBA SHOKUDOU", startAt: "2026-07-26T15:10:00", endAt: "2026-07-26T15:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/5829" },
+  { id: "fr-d3-n4", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "Keishi Tanaka",         stageName: "NAEBA SHOKUDOU", startAt: "2026-07-26T17:10:00", endAt: "2026-07-26T17:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/3594" },
+  { id: "fr-d3-n5", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "苗場音楽突撃隊",         stageName: "NAEBA SHOKUDOU", startAt: "2026-07-26T19:10:00", endAt: "2026-07-26T19:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/3196" },
+  { id: "fr-d3-n6", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "REGA",                  stageName: "NAEBA SHOKUDOU", startAt: "2026-07-26T21:10:00", endAt: "2026-07-26T21:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/2698" },
+  { id: "fr-d3-n7", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "TBA",                  stageName: "NAEBA SHOKUDOU", startAt: "2026-07-26T22:45:00", endAt: "2026-07-26T23:25:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6944" },
+
+  // Day 3 · GANBAN
+  { id: "fr-d3-gb1", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "TAKU INOUE",          stageName: "GANBAN", startAt: "2026-07-26T23:30:00", endAt: "2026-07-27T01:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6159" },
+  { id: "fr-d3-gb2", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "ANTS HOUSE (Nariaki & Nomizo & Rintaro Sekizuka)", stageName: "GANBAN", startAt: "2026-07-27T01:00:00", endAt: "2026-07-27T04:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6957" },
+
+  // Day 3 · BLUE GALAXY
+  { id: "fr-d3-bg1",  festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "DJ JIM",                            stageName: "BLUE GALAXY", startAt: "2026-07-26T12:00:00", endAt: "2026-07-26T13:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/1414" },
+  { id: "fr-d3-bg2",  festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "田原'104'洋",                       stageName: "BLUE GALAXY", startAt: "2026-07-26T13:00:00", endAt: "2026-07-26T13:40:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6969" },
+  { id: "fr-d3-bg3",  festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "NAOKI IENAGA (DUB STORE RECORDS)",  stageName: "BLUE GALAXY", startAt: "2026-07-26T13:40:00", endAt: "2026-07-26T14:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/4035" },
+  { id: "fr-d3-bg4",  festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "TIM ROCKINS",                       stageName: "BLUE GALAXY", startAt: "2026-07-26T14:30:00", endAt: "2026-07-26T15:10:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6968" },
+  { id: "fr-d3-bg5",  festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "Nozomu",                            stageName: "BLUE GALAXY", startAt: "2026-07-26T15:50:00", endAt: "2026-07-26T16:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6474" },
+  { id: "fr-d3-bg6",  festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "Can Dream®",                        stageName: "BLUE GALAXY", startAt: "2026-07-26T16:30:00", endAt: "2026-07-26T17:10:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6967" },
+  { id: "fr-d3-bg7",  festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "Satria Ramadhan",                   stageName: "BLUE GALAXY", startAt: "2026-07-26T17:10:00", endAt: "2026-07-26T17:50:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6480" },
+  { id: "fr-d3-bg8",  festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "JAMAiCAN TiME",                     stageName: "BLUE GALAXY", startAt: "2026-07-26T17:50:00", endAt: "2026-07-26T18:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6966" },
+  { id: "fr-d3-bg9",  festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "RJD",                               stageName: "BLUE GALAXY", startAt: "2026-07-26T18:30:00", endAt: "2026-07-26T19:10:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6959" },
+  { id: "fr-d3-bg10", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "HANASUBI",                          stageName: "BLUE GALAXY", startAt: "2026-07-26T19:10:00", endAt: "2026-07-26T20:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6965" },
+  { id: "fr-d3-bg11", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "DJ JIM",                            stageName: "BLUE GALAXY", startAt: "2026-07-26T20:00:00", endAt: "2026-07-26T20:40:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/1414" },
+  { id: "fr-d3-bg12", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "Yutaro",                            stageName: "BLUE GALAXY", startAt: "2026-07-26T20:40:00", endAt: "2026-07-26T22:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6964" },
+  { id: "fr-d3-bg13", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "DR. IHARA",                         stageName: "BLUE GALAXY", startAt: "2026-07-26T22:00:00", endAt: "2026-07-26T23:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/2165" },
+  { id: "fr-d3-bg14", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "DJ JIM",                            stageName: "BLUE GALAXY", startAt: "2026-07-26T23:00:00", endAt: "2026-07-27T00:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/1414" },
+
+  // Day 3 · PALACE AREA
+  { id: "fr-d3-pa1", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "SAKURA CIRCUS",     stageName: "PALACE AREA", startAt: "2026-07-27T00:30:00", endAt: "2026-07-27T00:45:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6937" },
+  { id: "fr-d3-pa2", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "SAKURA CIRCUS",     stageName: "PALACE AREA", startAt: "2026-07-27T01:30:00", endAt: "2026-07-27T01:45:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6937" },
+  { id: "fr-d3-pa3", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "SAKURA CIRCUS",     stageName: "PALACE AREA", startAt: "2026-07-27T02:30:00", endAt: "2026-07-27T02:45:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6937" },
+
+  // Day 3 · PYRAMID GARDEN
+  { id: "fr-d3-pg1", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "ヨガワークショップ / 渋木さやか",   stageName: "PYRAMID GARDEN", startAt: "2026-07-26T08:30:00", endAt: "2026-07-26T09:20:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/5716" },
+  { id: "fr-d3-pg2", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "チャラン・ポ・ランタン",            stageName: "PYRAMID GARDEN", startAt: "2026-07-26T09:40:00", endAt: "2026-07-26T10:40:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/3295" },
+  { id: "fr-d3-pg3", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "Caravan",                          stageName: "PYRAMID GARDEN", startAt: "2026-07-26T11:30:00", endAt: "2026-07-26T12:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/3266" },
+  { id: "fr-d3-pg4", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "Kadal",                            stageName: "PYRAMID GARDEN", startAt: "2026-07-26T16:00:00", endAt: "2026-07-26T19:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6954" },
+  { id: "fr-d3-pg5", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "KOTARO",                           stageName: "PYRAMID GARDEN", startAt: "2026-07-26T19:00:00", endAt: "2026-07-26T22:00:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/5460" },
+  { id: "fr-d3-pg6", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "蓮沼執太チーム",                    stageName: "PYRAMID GARDEN", startAt: "2026-07-26T22:30:00", endAt: "2026-07-26T23:30:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/6953" },
+  { id: "fr-d3-pg7", festivalId: "fuji-rock-2026", displayDate: "2026-07-26", artistName: "TENDRE",                           stageName: "PYRAMID GARDEN", startAt: "2026-07-27T00:20:00", endAt: "2026-07-27T01:20:00", confidence: 1, link: "https://en.fujirockfestival.com/artist/detail/4945" },
 
 ];
