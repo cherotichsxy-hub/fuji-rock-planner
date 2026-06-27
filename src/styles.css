@@ -2504,6 +2504,35 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   max-width: 100%;
   height: auto;
 }
+.share-preview-loading {
+  flex: 1;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 280px;
+  color: var(--text);
+}
+.share-preview-loading p {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.share-preview-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--text);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 .share-preview-actions {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
@@ -2674,7 +2703,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   pointer-events: none;
 }
 
-/* 主看块：圆角软方块，无重边框 */
+/* 主看块：红=headliner / 绿=普通必看 / 米黄虚框=待定 */
 .share-tt-block {
   position: absolute;
   left: 3px;
@@ -2689,7 +2718,11 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   border-radius: 6px;
 }
 .share-tt-block.share-tt-must {
-  background: var(--stage-solid);
+  background: #5e6a4e;          /* 普通必看：olive 复古绿 (stage palette) */
+  color: #fbf9f8;
+}
+.share-tt-block.share-tt-must.is-h {
+  background: var(--bauhaus-red);   /* Headliner：crimson 红 */
   color: #fbf9f8;
 }
 .share-tt-block.share-tt-maybe {
@@ -2700,7 +2733,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   content: "";
   position: absolute;
   inset: 2px;
-  border: 1.5px dashed var(--stage-solid);
+  border: 1.5px dashed #1e1506;
   border-radius: 4px;
   pointer-events: none;
 }
@@ -2728,19 +2761,25 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 }
 .share-tt-block.share-tt-maybe .share-tt-block-name { opacity: 0.78; }
 
-/* 必看 bubble (备选列内) */
+/* 必看 bubble (备选列内) — 同样的红/绿/虚线三色 */
 .share-tt-bubble {
   position: absolute;
   left: 3px;
   right: 3px;
   padding: 6px 8px;
-  background: var(--stage-solid);
-  color: #fbf9f8;
   display: flex;
   align-items: center;
   overflow: hidden;
   z-index: 2;
   border-radius: 6px;
+}
+.share-tt-bubble.share-tt-must {
+  background: #5e6a4e;
+  color: #fbf9f8;
+}
+.share-tt-bubble.share-tt-must.is-h {
+  background: var(--bauhaus-red);
+  color: #fbf9f8;
 }
 .share-tt-bubble.share-tt-maybe {
   background: rgba(251, 249, 248, 0.85);
@@ -2750,7 +2789,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   content: "";
   position: absolute;
   inset: 2px;
-  border: 1px dashed var(--stage-solid);
+  border: 1px dashed #1e1506;
   border-radius: 4px;
   pointer-events: none;
 }
@@ -2786,6 +2825,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   gap: 14px;
   color: rgba(30, 21, 6, 0.78);
 }
+.share-tt-foot-legend .legend-h,
 .share-tt-foot-legend .legend-must,
 .share-tt-foot-legend .legend-maybe {
   display: inline-block;
@@ -2793,15 +2833,13 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   height: 14px;
   margin-right: 4px;
   vertical-align: -2px;
+  border-radius: 3px;
 }
-.share-tt-foot-legend .legend-must { background: #8b1d1d; }
+.share-tt-foot-legend .legend-h { background: var(--bauhaus-red); }
+.share-tt-foot-legend .legend-must { background: #5e6a4e; }
 .share-tt-foot-legend .legend-maybe {
   background: #fbf9f8;
-  border: 1.5px dashed #8b1d1d;
-}
-.share-tt-foot-legend .legend-star {
-  font-weight: 900;
-  margin-right: 4px;
+  border: 1.5px dashed #1e1506;
 }
 .share-canvas {
   background-color: #d6dfde;

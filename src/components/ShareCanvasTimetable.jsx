@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-import { getStageColor } from "../lib/stages.js";
 
 /**
  * 时间表式分享卡 v4 · 3 天合一张图。
@@ -212,7 +211,6 @@ export default function ShareCanvasTimetable({
                       />
                     ))}
                     {d.slots.map(({ main }) => {
-                      const color = getStageColor(festival, main.stageName);
                       const sm = (new Date(main.startAt) - dayStart) / 60000;
                       const em = (new Date(main.endAt) - dayStart) / 60000;
                       const top = ((sm - range.minM) / 60) * HOUR_PX;
@@ -226,7 +224,6 @@ export default function ShareCanvasTimetable({
                           style={{
                             top: `${top}px`,
                             height: `${height}px`,
-                            "--stage-solid": color.solid,
                           }}
                         >
                           <div className="share-tt-block-name">
@@ -255,23 +252,23 @@ export default function ShareCanvasTimetable({
                     ))}
                     {d.slots.map(({ backups }) =>
                       backups.map((perf) => {
-                        const color = getStageColor(festival, perf.stageName);
                         const sm = (new Date(perf.startAt) - dayStart) / 60000;
                         const em = (new Date(perf.endAt) - dayStart) / 60000;
                         const top = ((sm - range.minM) / 60) * HOUR_PX;
                         const height = ((em - sm) / 60) * HOUR_PX;
                         const status = selections[perf.id];
+                        const isH = headliners.includes(perf.id);
                         return (
                           <article
                             key={perf.id}
-                            className={`share-tt-bubble share-tt-${status}`}
+                            className={`share-tt-bubble share-tt-${status}${isH ? " is-h" : ""}`}
                             style={{
                               top: `${top}px`,
                               height: `${height}px`,
-                              "--stage-solid": color.solid,
                             }}
                           >
                             <div className="share-tt-bubble-name">
+                              {isH && <span className="share-tt-h-mark">★</span>}
                               {perf.artistName}
                             </div>
                           </article>
@@ -291,9 +288,9 @@ export default function ShareCanvasTimetable({
           {festival.name} · {festival.year}
         </span>
         <span className="share-tt-foot-legend">
-          <span className="legend-must" /> 主看 (必去)
-          <span className="legend-maybe" /> 必看 (备选)
-          <span className="legend-star">★</span> Top 3
+          <span className="legend-h" />★ 最想看
+          <span className="legend-must" /> 必看
+          <span className="legend-maybe" /> 待定
         </span>
       </footer>
     </div>

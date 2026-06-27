@@ -307,7 +307,7 @@ export default function MyPlanList({
         document.body,
       )}
 
-      {shareState === "preview" && previewUrl &&
+      {(shareState === "working" || (shareState === "preview" && previewUrl)) &&
         createPortal(
           <div className="share-preview-backdrop" onClick={closePreview}>
             <div
@@ -345,11 +345,18 @@ export default function MyPlanList({
                 </button>
               </div>
               <div className="share-preview-img-wrap">
-                <img
-                  className="share-preview-img"
-                  src={previewUrl}
-                  alt="分享图"
-                />
+                {shareState === "working" ? (
+                  <div className="share-preview-loading">
+                    <div className="share-preview-spinner" />
+                    <p className="u-mono">生成中…</p>
+                  </div>
+                ) : (
+                  <img
+                    className="share-preview-img"
+                    src={previewUrl}
+                    alt="分享图"
+                  />
+                )}
               </div>
               <div className="share-preview-actions">
                 <button
@@ -363,6 +370,7 @@ export default function MyPlanList({
                   type="button"
                   className="share-preview-confirm"
                   onClick={confirmDownload}
+                  disabled={shareState !== "preview"}
                 >
                   ↗ 下载 / 分享
                 </button>
