@@ -1905,19 +1905,19 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 }
 .timetable-hours {
   position: relative;
-  background: rgba(0,0,0,0.04);
-  border-right: 1px solid rgba(0,0,0,0.15);
+  background: transparent;
 }
 .timetable-hour-label {
   position: absolute;
   left: 0;
   right: 0;
-  text-align: center;
-  font-size: 10px;
-  letter-spacing: 0.04em;
-  color: rgba(0,0,0,0.55);
-  transform: translateY(-7px);
-  padding: 0 4px;
+  text-align: right;
+  padding-right: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--paper-ink);
+  transform: translateY(-9px);
 }
 .timetable-lane {
   position: relative;
@@ -1932,74 +1932,89 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   left: 0;
   right: 0;
   height: 0;
-  border-top: 1px dashed rgba(0,0,0,0.10);
+  border-top: 1px dashed rgba(30, 21, 6, 0.22);
+  pointer-events: none;
 }
 
-/* v2 主轴 + 备选 */
+/* v2 主轴 + 备选（PORTOLA 风：整点线引导，块无重边框）*/
 .timetable-grid.v2 .timetable-hours {
-  background: rgba(0,0,0,0.03);
+  background: transparent;
 }
 .timetable-axis-main {
   position: relative;
   background: var(--paper-bg);
+  border-left: 1px solid rgba(30, 21, 6, 0.18);
 }
 .timetable-axis-backup {
   position: relative;
-  background: rgba(139, 29, 29, 0.03);
-  border-left: 1.5px dashed rgba(30, 21, 6, 0.3);
+  background: var(--paper-bg);
+  border-left: 1px solid rgba(30, 21, 6, 0.18);
 }
-/* 主轴块沿用 .tt-block 样式但更大 */
+/* 主轴块：铺满列、无边框（靠颜色和位置识别） */
 .tt-block.tt-axis {
-  left: 6px;
-  right: 6px;
-  padding: 8px 12px 8px;
+  left: 0;
+  right: 0;
+  padding: 10px 12px;
+  border: none;
+  box-shadow: none;
   font-size: 13px;
+  gap: 4px;
+  z-index: 2;
 }
 .tt-block.tt-axis .tt-block-name {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 800;
+  letter-spacing: 0.01em;
   word-break: break-word;
+  line-height: 1.15;
 }
 .tt-block.tt-axis.is-headliner {
   outline: 2px solid var(--paper-ink);
-  outline-offset: -1px;
+  outline-offset: -2px;
 }
 .tt-headliner-mark {
   font-size: 14px;
   margin-right: 4px;
   line-height: 1;
 }
-/* 备选 bubble */
+/* 备选块（矩形，铺满备选列）*/
 .tt-bubble {
   position: absolute;
-  left: 4px;
-  right: 4px;
-  padding: 6px 8px;
+  left: 0;
+  right: 0;
+  padding: 8px 8px;
   background: var(--stage-solid);
   color: #fff;
-  border: 1.5px solid var(--paper-ink);
-  border-radius: 6px;
+  border: none;
+  border-radius: 0;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
   overflow: hidden;
   text-align: left;
   font-family: inherit;
   transition: transform 0.08s ease;
+  z-index: 2;
 }
 .tt-bubble:active {
-  transform: translate(1px, 1px);
+  transform: scale(0.98);
 }
 .tt-bubble.tt-maybe {
   background: var(--paper-bg);
   color: var(--paper-ink);
-  border-style: dashed;
   opacity: 0.7;
+}
+.tt-bubble.tt-maybe::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px dashed var(--paper-ink);
+  pointer-events: none;
 }
 .tt-bubble-name {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.15;
   word-break: break-word;
   display: -webkit-box;
@@ -2543,50 +2558,22 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 }
 
 /* ========================================================== */
-/* 分享画布 · 时间表式 v2 (单天，米黄+黑+crimson 三色)         */
+/* 分享画布 · 时间表式 v4 (3 天合一张图，每天主看+必看双列)     */
+/* 复用行程式的蓝灰底 + 半圆 + 唱片/音符/麦克风装饰               */
 /* ========================================================== */
 .share-tt-canvas {
-  background-color: #fbf9f8;
-  color: #1e1506;
-  padding: 64px 56px 36px;
-  font-family: var(--font-display, ui-sans-serif);
+  background-color: #d6dfde;
+  color: var(--paper-ink);
+  padding: 64px 56px 40px;
+  font-family: var(--font-display);
   display: inline-block;
   position: relative;
+  overflow: hidden;
 }
-.share-tt-head {
-  margin-bottom: 32px;
-}
-.share-tt-going {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  margin-bottom: 8px;
-}
-.share-tt-bolt { width: 18px; height: 32px; color: #8b1d1d; }
-.share-tt-bolt.mirror { transform: scaleX(-1); }
-.share-tt-name {
-  font-size: 56px;
-  font-weight: 900;
-  letter-spacing: 0.01em;
-  margin: 0 0 14px;
-  line-height: 0.98;
-}
+.share-tt-head { margin-bottom: 28px; }
 .share-tt-meta {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 12px;
-  font-size: 14px;
-  letter-spacing: 0.08em;
+  margin-top: 12px;
 }
-.share-tt-meta strong {
-  font-size: 16px;
-  font-weight: 900;
-  letter-spacing: 0.06em;
-}
-.share-tt-meta .sep { opacity: 0.35; }
 
 .share-tt-day-empty {
   padding: 64px 40px;
@@ -2596,6 +2583,58 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   letter-spacing: 0.1em;
 }
 
+/* 列头：DAY 1/2/3 + 必看 */
+.share-tt-day-heads {
+  display: grid;
+  align-items: end;
+  margin-bottom: 0;
+  border-bottom: 2px solid #1e1506;
+  padding-bottom: 10px;
+}
+.share-tt-day-head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 12px;
+}
+.share-tt-day-head.main-side strong {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+.share-tt-day-head.main-side .share-tt-day-date {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+}
+.share-tt-day-head.backup-side {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(30, 21, 6, 0.5);
+  text-transform: uppercase;
+  align-self: end;
+  padding: 0 8px 2px;
+}
+
+/* 子列头：主看 */
+.share-tt-sub-heads {
+  display: grid;
+  border-bottom: 1px solid rgba(30, 21, 6, 0.25);
+  padding: 6px 0;
+  margin-bottom: 0;
+}
+.share-tt-sub-head {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(30, 21, 6, 0.5);
+  text-transform: uppercase;
+  padding: 0 12px;
+}
+
+/* 时间表主体 */
 .share-tt-grid {
   display: grid;
   align-items: stretch;
@@ -2603,89 +2642,138 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 }
 .share-tt-hours {
   position: relative;
-  border-right: 1.5px solid #1e1506;
 }
 .share-tt-hour-label {
   position: absolute;
   left: 0;
   right: 8px;
   text-align: right;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
   color: #1e1506;
-  transform: translateY(-8px);
+  transform: translateY(-9px);
 }
-.share-tt-lane {
+
+.share-tt-axis-main {
   position: relative;
-  border-left: 1.5px solid #1e1506;
+  border-left: 1px solid rgba(30, 21, 6, 0.15);
+  background: transparent;
 }
-.share-tt-lane:first-of-type { border-left: none; }
-.share-tt-block {
+.share-tt-axis-backup {
+  position: relative;
+  border-left: 1px dashed rgba(30, 21, 6, 0.2);
+  background: transparent;
+}
+.share-tt-grid-line {
   position: absolute;
   left: 0;
   right: 0;
+  height: 0;
+  border-top: 1px dashed rgba(30, 21, 6, 0.18);
+  pointer-events: none;
+}
+
+/* 主看块：圆角软方块，无重边框 */
+.share-tt-block {
+  position: absolute;
+  left: 3px;
+  right: 3px;
   padding: 10px 14px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 4px;
   overflow: hidden;
-  line-height: 1.2;
-  border-top: 1.5px solid #1e1506;
+  line-height: 1.15;
+  z-index: 2;
+  border-radius: 6px;
 }
 .share-tt-block.share-tt-must {
   background: var(--stage-solid);
   color: #fbf9f8;
 }
 .share-tt-block.share-tt-maybe {
-  background: #fbf9f8;
+  background: rgba(251, 249, 248, 0.85);
   color: #1e1506;
-  border-top-style: dashed;
 }
 .share-tt-block.share-tt-maybe::after {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 2px;
   border: 1.5px dashed var(--stage-solid);
-  border-top: none;
+  border-radius: 4px;
   pointer-events: none;
 }
-.share-tt-block-stage {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.85;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.share-tt-h-mark {
+  font-size: 15px;
+  margin-right: 4px;
+  vertical-align: -1px;
 }
-.share-tt-block.share-tt-must .share-tt-block-stage { opacity: 0.9; }
 .share-tt-block-name {
-  font-size: 22px;
+  font-size: 17px;
   font-weight: 900;
   letter-spacing: 0;
   word-break: break-word;
 }
-.share-tt-block.share-tt-maybe .share-tt-block-name {
-  opacity: 0.78;
+.share-tt-block-stage {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: auto;
+  opacity: 0.88;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.share-tt-block-time {
+.share-tt-block.share-tt-maybe .share-tt-block-name { opacity: 0.78; }
+
+/* 必看 bubble (备选列内) */
+.share-tt-bubble {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  padding: 6px 8px;
+  background: var(--stage-solid);
+  color: #fbf9f8;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  z-index: 2;
+  border-radius: 6px;
+}
+.share-tt-bubble.share-tt-maybe {
+  background: rgba(251, 249, 248, 0.85);
+  color: #1e1506;
+}
+.share-tt-bubble.share-tt-maybe::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 1px dashed var(--stage-solid);
+  border-radius: 4px;
+  pointer-events: none;
+}
+.share-tt-bubble-name {
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  opacity: 0.7;
+  font-weight: 800;
+  line-height: 1.15;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
+/* footer + legend */
 .share-tt-foot {
-  margin-top: 36px;
+  margin-top: 28px;
   border-top: 1.5px solid #1e1506;
-  padding-top: 16px;
+  padding-top: 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.1em;
 }
 .share-tt-foot-tag {
@@ -2695,7 +2783,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .share-tt-foot-legend {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 14px;
   color: rgba(30, 21, 6, 0.78);
 }
 .share-tt-foot-legend .legend-must,
@@ -2709,7 +2797,11 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .share-tt-foot-legend .legend-must { background: #8b1d1d; }
 .share-tt-foot-legend .legend-maybe {
   background: #fbf9f8;
-  border: 1.5px dashed #1e1506;
+  border: 1.5px dashed #8b1d1d;
+}
+.share-tt-foot-legend .legend-star {
+  font-weight: 900;
+  margin-right: 4px;
 }
 .share-canvas {
   background-color: #d6dfde;

@@ -300,7 +300,8 @@ export default function MyPlanList({
             festival={festival}
             performances={performances}
             selections={selections}
-            dayIndex={shareDayIndex}
+            headliners={headlinerList}
+            axisChoice={axisChoice || {}}
           />
         </div>,
         document.body,
@@ -337,29 +338,12 @@ export default function MyPlanList({
                   role="tab"
                   aria-selected={shareMode === "timetable"}
                   className={shareMode === "timetable" ? "active" : ""}
-                  onClick={() => handleShare("timetable", shareDayIndex)}
+                  onClick={() => handleShare("timetable")}
                   disabled={shareState === "working"}
                 >
                   时间表式
                 </button>
               </div>
-              {shareMode === "timetable" && (
-                <div className="share-preview-days" role="tablist">
-                  {festival.dates.map((_, i) => (
-                    <button
-                      key={i}
-                      type="button"
-                      role="tab"
-                      aria-selected={shareDayIndex === i}
-                      className={shareDayIndex === i ? "active" : ""}
-                      onClick={() => handleShare("timetable", i)}
-                      disabled={shareState === "working"}
-                    >
-                      DAY {i + 1}
-                    </button>
-                  ))}
-                </div>
-              )}
               <div className="share-preview-img-wrap">
                 <img
                   className="share-preview-img"

@@ -111,8 +111,8 @@ export default function TimetableView({
         className="timetable-grid v2"
         style={{
           gridTemplateColumns: hasAnyBackup
-            ? "44px 1fr 96px"
-            : "44px 1fr",
+            ? "60px 1fr 104px"
+            : "60px 1fr",
           height: `${totalHeight}px`,
         }}
       >
@@ -131,6 +131,13 @@ export default function TimetableView({
 
         {/* 主轴列 */}
         <div className="timetable-axis-main" style={{ height: `${totalHeight}px` }}>
+          {hours.map((m) => (
+            <div
+              key={`gl-m-${m}`}
+              className="timetable-grid-line"
+              style={{ top: `${((m - range.minM) / 60) * HOUR_PX}px` }}
+            />
+          ))}
           {slots.map(({ main }) => {
             const color = getStageColor(festival, main.stageName);
             const startMin = (new Date(main.startAt) - dayStart) / 60000;
@@ -149,10 +156,6 @@ export default function TimetableView({
                   "--stage-solid": color.solid,
                 }}
               >
-                <div className="tt-block-time u-mono">
-                  {formatHM(main.startAt)}
-                  <span className="tt-block-end"> → {formatHM(main.endAt)}</span>
-                </div>
                 <div className="tt-block-name">
                   {isHeadliner && <span className="tt-headliner-mark" aria-hidden>★</span>}
                   {main.artistName}
@@ -169,6 +172,13 @@ export default function TimetableView({
         {/* 备选列 */}
         {hasAnyBackup && (
           <div className="timetable-axis-backup" style={{ height: `${totalHeight}px` }}>
+            {hours.map((m) => (
+              <div
+                key={`gl-b-${m}`}
+                className="timetable-grid-line"
+                style={{ top: `${((m - range.minM) / 60) * HOUR_PX}px` }}
+              />
+            ))}
             {slots.map(({ main, backups }) =>
               backups.map((perf) => {
                 const color = getStageColor(festival, perf.stageName);
