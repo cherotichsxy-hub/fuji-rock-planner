@@ -1219,6 +1219,75 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 
 /* ---------- 演出列表 LineupList（Bauhaus ticket）---------- */
 .lineup-list { padding: 12px 0 32px; }
+
+/* 搜索框 */
+.lineup-search {
+  margin: 0 16px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  background: var(--bg-phone);
+  border: 1.5px solid var(--text);
+  box-shadow: 2px 2px 0 var(--text);
+  height: 38px;
+}
+.lineup-search-icon {
+  font-size: 13px;
+  opacity: 0.55;
+  flex: 0 0 auto;
+}
+.lineup-search-input {
+  flex: 1 1 auto;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  padding: 0;
+  min-width: 0;
+}
+.lineup-search-input::placeholder { color: rgba(0,0,0,0.35); }
+.lineup-search-input::-webkit-search-cancel-button { display: none; }
+.lineup-search-clear {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: var(--text);
+  color: var(--bg-phone);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lineup-search-meta {
+  padding: 6px 16px 10px;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--text-mute);
+  text-transform: uppercase;
+}
+.lineup-card-date {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-mute);
+  margin-bottom: 2px;
+}
+.lineup-cards-flat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0 16px;
+}
+
 .lineup-legend {
   display: flex;
   gap: 16px;
