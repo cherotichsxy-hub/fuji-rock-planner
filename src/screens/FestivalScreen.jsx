@@ -10,8 +10,10 @@ export default function FestivalScreen({
   performances,
   selections,
   headliners,
+  axisChoice,
   onSetStatus,
   onToggleHeadliner,
+  onPickAxis,
   onBack,
   initialTab = "lineup",
 }) {
@@ -145,9 +147,11 @@ export default function FestivalScreen({
             stageFilter={stageFilter}
             selections={festivalSelections}
             headliners={headliners}
+            axisChoice={axisChoice || {}}
             conflictMap={conflictMap}
             onSetStatus={onSetStatus}
             onToggleHeadliner={onToggleHeadliner}
+            onPickAxis={onPickAxis}
           />
         )}
       </main>

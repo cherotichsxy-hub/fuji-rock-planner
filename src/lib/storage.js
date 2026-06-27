@@ -8,6 +8,8 @@ const KEYS = {
   performances: "community:performances",
   selections: "me:selections",
   headliners: "me:headliners",
+  // 用户在主轴/备选撞档冲突中点过的"主轴选择"：{ festivalId: { perfId: true } }
+  axisChoice: "me:axisChoice",
   seedVersion: "community:seed_version",
 };
 
@@ -81,4 +83,12 @@ export function loadHeadliners() {
 
 export function saveHeadliners(value) {
   save(KEYS.headliners, value);
+}
+
+export function loadAxisChoice() {
+  return load(KEYS.axisChoice, {});
+}
+
+export function saveAxisChoice(value) {
+  save(KEYS.axisChoice, value);
 }

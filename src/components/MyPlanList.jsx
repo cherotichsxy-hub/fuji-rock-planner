@@ -4,6 +4,8 @@ import { toBlob } from "html-to-image";
 import { formatHM, formatChineseMonthDay } from "../lib/time.js";
 import { getStageColor } from "../lib/stages.js";
 import ShareCanvas from "./ShareCanvas.jsx";
+import ShareCanvasTimetable from "./ShareCanvasTimetable.jsx";
+import TimetableView from "./TimetableView.jsx";
 
 // headliner 色块色板（5 种 dusty 变体轮换）
 const HEADLINER_COLORS = ["#8b1d1d", "#7e97a8", "#1e1506", "#b76060", "#afc0cd"];
@@ -15,23 +17,43 @@ export default function MyPlanList({
   stageFilter,
   selections,
   headliners,
+  axisChoice,
   conflictMap,
   onSetStatus,
   onToggleHeadliner,
+  onPickAxis,
 }) {
   const [pickerOpen, setPickerOpen] = useState(false);
   const paperRef = useRef(null);
   const shareCanvasRef = useRef(null);
+  const [view, setView] = useState(() => {
+    try { return localStorage.getItem("me:myplan_view") || "list"; } catch { return "list"; }
+  });
+  function switchView(v) {
+    setView(v);
+    try { localStorage.setItem("me:myplan_view", v); } catch {}
+  }
   const [shareState, setShareState] = useState("idle"); // idle | working | preview | done | error
   const [previewBlob, setPreviewBlob] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [shareError, setShareError] = useState(null);
+  const [shareMode, setShareMode] = useState("list"); // list | timetable
+  const [shareDayIndex, setShareDayIndex] = useState(0);
+  const shareTimetableRef = useRef(null);
 
-  async function handleShare() {
+  async function handleShare(mode = shareMode, dayIdx = shareDayIndex) {
     setShareState("working");
     setShareError(null);
+    setShareMode(mode);
+    setShareDayIndex(dayIdx);
     try {
-      const target = shareCanvasRef.current?.querySelector(".share-canvas");
+      // 等两帧让 ShareCanvasTimetable 在切换 mode/day 后 DOM 完整
+      await new Promise((r) => requestAnimationFrame(r));
+      await new Promise((r) => requestAnimationFrame(r));
+      const target =
+        mode === "timetable"
+          ? shareTimetableRef.current?.querySelector(".share-tt-canvas")
+          : shareCanvasRef.current?.querySelector(".share-canvas");
       if (!target) throw new Error("share canvas 未就绪");
       // 等字体加载完，避免抓到无字体的画
       if (document.fonts && document.fonts.ready) {
@@ -44,10 +66,11 @@ export default function MyPlanList({
       // 在 foreignObject 里会渲染失败导致整张图变黑。生成前临时移除，完成后恢复。
       const prevBgImage = target.style.backgroundImage;
       target.style.backgroundImage = "none";
+      const bgColor = mode === "timetable" ? "#fbf9f8" : "#d6dfde";
       let blob;
       try {
         blob = await toBlob(target, {
-          backgroundColor: "#d6dfde",
+          backgroundColor: bgColor,
           pixelRatio,
           cacheBust: true,
         });
@@ -168,6 +191,27 @@ export default function MyPlanList({
           <span>TOTAL · {String(summary.total).padStart(2, "0")}</span>
         </div>
 
+        <div className="myplan-view-switch u-mono" role="tablist">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={view === "list"}
+            className={view === "list" ? "active" : ""}
+            onClick={() => switchView("list")}
+          >
+            列表
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={view === "table"}
+            className={view === "table" ? "active" : ""}
+            onClick={() => switchView("table")}
+          >
+            时间表
+          </button>
+        </div>
+
         <div className="myplan-paper-divider" />
 
         {visible.length === 0 ? (
@@ -175,6 +219,17 @@ export default function MyPlanList({
             <p className="u-mono">— NO SETS QUEUED FOR THIS DAY —</p>
             <p>到「演出列表」点 <strong>★</strong> 或 <strong>?</strong> 标记演出</p>
           </div>
+        ) : view === "table" ? (
+          <TimetableView
+            festival={festival}
+            performances={performances}
+            activeDate={activeDate}
+            selections={selections}
+            headliners={headliners}
+            axisChoice={axisChoice || {}}
+            conflictMap={conflictMap}
+            onPickAxis={onPickAxis}
+          />
         ) : (
           <ul className="myplan-rows">
             {visible.map((p) => (
@@ -239,6 +294,18 @@ export default function MyPlanList({
         document.body,
       )}
 
+      {createPortal(
+        <div className="share-canvas-mount" ref={shareTimetableRef} aria-hidden>
+          <ShareCanvasTimetable
+            festival={festival}
+            performances={performances}
+            selections={selections}
+            dayIndex={shareDayIndex}
+          />
+        </div>,
+        document.body,
+      )}
+
       {shareState === "preview" && previewUrl &&
         createPortal(
           <div className="share-preview-backdrop" onClick={closePreview}>
@@ -254,6 +321,45 @@ export default function MyPlanList({
               >
                 ✕
               </button>
+              <div className="share-preview-mode" role="tablist">
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={shareMode === "list"}
+                  className={shareMode === "list" ? "active" : ""}
+                  onClick={() => handleShare("list")}
+                  disabled={shareState === "working"}
+                >
+                  行程式
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={shareMode === "timetable"}
+                  className={shareMode === "timetable" ? "active" : ""}
+                  onClick={() => handleShare("timetable", shareDayIndex)}
+                  disabled={shareState === "working"}
+                >
+                  时间表式
+                </button>
+              </div>
+              {shareMode === "timetable" && (
+                <div className="share-preview-days" role="tablist">
+                  {festival.dates.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      role="tab"
+                      aria-selected={shareDayIndex === i}
+                      className={shareDayIndex === i ? "active" : ""}
+                      onClick={() => handleShare("timetable", i)}
+                      disabled={shareState === "working"}
+                    >
+                      DAY {i + 1}
+                    </button>
+                  ))}
+                </div>
+              )}
               <div className="share-preview-img-wrap">
                 <img
                   className="share-preview-img"

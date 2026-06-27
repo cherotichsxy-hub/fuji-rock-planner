@@ -1935,6 +1935,88 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   border-top: 1px dashed rgba(0,0,0,0.10);
 }
 
+/* v2 主轴 + 备选 */
+.timetable-grid.v2 .timetable-hours {
+  background: rgba(0,0,0,0.03);
+}
+.timetable-axis-main {
+  position: relative;
+  background: var(--paper-bg);
+}
+.timetable-axis-backup {
+  position: relative;
+  background: rgba(139, 29, 29, 0.03);
+  border-left: 1.5px dashed rgba(30, 21, 6, 0.3);
+}
+/* 主轴块沿用 .tt-block 样式但更大 */
+.tt-block.tt-axis {
+  left: 6px;
+  right: 6px;
+  padding: 8px 12px 8px;
+  font-size: 13px;
+}
+.tt-block.tt-axis .tt-block-name {
+  font-size: 15px;
+  font-weight: 800;
+  word-break: break-word;
+}
+.tt-block.tt-axis.is-headliner {
+  outline: 2px solid var(--paper-ink);
+  outline-offset: -1px;
+}
+.tt-headliner-mark {
+  font-size: 14px;
+  margin-right: 4px;
+  line-height: 1;
+}
+/* 备选 bubble */
+.tt-bubble {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  padding: 6px 8px;
+  background: var(--stage-solid);
+  color: #fff;
+  border: 1.5px solid var(--paper-ink);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+  text-align: left;
+  font-family: inherit;
+  transition: transform 0.08s ease;
+}
+.tt-bubble:active {
+  transform: translate(1px, 1px);
+}
+.tt-bubble.tt-maybe {
+  background: var(--paper-bg);
+  color: var(--paper-ink);
+  border-style: dashed;
+  opacity: 0.7;
+}
+.tt-bubble-name {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.15;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.tt-bubble-meta {
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+  margin-top: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* 演出块 ===== 必看：实底色块 + 加粗 ===== */
 .tt-block {
   position: absolute;
